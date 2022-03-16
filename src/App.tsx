@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import Launch from "./components/Launch";
+import LaunchDetails from "./components/LaunchDetails";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [id, setId] = React.useState(42);
+  const handleIdChange = React.useCallback((newId) => {
+    setId(newId);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Launch handleIdChange={handleIdChange} />
+      <LaunchDetails id={id} />
     </div>
   );
-}
+};
 
 export default App;
